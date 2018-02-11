@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
             Manifest.permission.ANSWER_PHONE_CALLS,
             Manifest.permission.CALL_PHONE,
             Manifest.permission.DISABLE_KEYGUARD,
+            Manifest.permission.RECEIVE_BOOT_COMPLETED,
             Manifest.permission.READ_CONTACTS,
             Manifest.permission.READ_PHONE_STATE,
             Manifest.permission.SYSTEM_ALERT_WINDOW,
