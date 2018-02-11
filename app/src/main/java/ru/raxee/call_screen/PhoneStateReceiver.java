@@ -1,6 +1,5 @@
 package ru.raxee.call_screen;
 
-import android.annotation.SuppressLint;
 import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,25 +8,26 @@ import android.os.PowerManager;
 import android.telephony.TelephonyManager;
 
 public class PhoneStateReceiver extends BroadcastReceiver {
-    @SuppressLint("UnsafeProtectedBroadcastReceiver")
     @Override
     public void onReceive(Context context, Intent intent) {
-        RingingWindow ringingWindow = RingingWindow.getInstance();
+        if (TelephonyManager.ACTION_PHONE_STATE_CHANGED.equals(intent.getAction())) {
+            RingingWindow ringingWindow = RingingWindow.getInstance();
 
-        try {
-            String state = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
-            if (state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
-                processRinging(context, intent);
-            }
-            if (state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
+            try {
+                String state = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
+                if (TelephonyManager.EXTRA_STATE_RINGING.equals(state)) {
+                    processRinging(context, intent);
+                }
+                if (TelephonyManager.EXTRA_STATE_OFFHOOK.equals(state)) {
+                    ringingWindow.hide();
+                }
+                if (TelephonyManager.EXTRA_STATE_IDLE.equals(state)) {
+                    ringingWindow.hide();
+                }
+            } catch (Exception e) {
                 ringingWindow.hide();
+                e.printStackTrace();
             }
-            if (state.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
-                ringingWindow.hide();
-            }
-        } catch (Exception e) {
-            ringingWindow.hide();
-            e.printStackTrace();
         }
     }
 

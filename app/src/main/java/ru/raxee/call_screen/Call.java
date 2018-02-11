@@ -2,6 +2,7 @@ package ru.raxee.call_screen;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.telecom.TelecomManager;
 import android.telephony.TelephonyManager;
 
 class Call {
@@ -24,10 +25,10 @@ class Call {
 
     void answer() {
         try {
-            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            assert telephonyManager != null;
+            TelecomManager telecomManager = (TelecomManager) context.getSystemService(Context.TELECOM_SERVICE);
+            assert telecomManager != null;
 
-            telephonyManager.getClass().getMethod("answerRingingCall").invoke(telephonyManager);
+            telecomManager.getClass().getMethod("acceptRingingCall").invoke(telecomManager);
         } catch (Exception e) {
             e.printStackTrace();
         }

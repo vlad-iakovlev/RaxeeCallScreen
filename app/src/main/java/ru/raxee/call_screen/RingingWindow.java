@@ -21,6 +21,7 @@ class RingingWindow {
     private boolean isShown = false;
 
 
+    @SuppressLint("InflateParams")
     private RingingWindow() {
         context = App.getContext();
 

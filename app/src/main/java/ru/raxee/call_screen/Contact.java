@@ -40,12 +40,12 @@ class Contact {
 
 
     private void setNumber(String phoneNumber) throws Exception {
-        int numberInt = 0;
+        long numberInt = -1;
         try {
-            numberInt = Integer.parseInt(phoneNumber);
+            numberInt = Long.parseLong(phoneNumber);
         } catch (Exception ignored) {}
 
-        if (numberInt <= 0) {
+        if (numberInt < 0) {
             throw new Exception("Hidden number");
         }
 
