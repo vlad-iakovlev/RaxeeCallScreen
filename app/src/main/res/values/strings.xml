@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Raxee Call Screen</string>
+
+    <string name="hidden_number">Номер скрыт</string>
+    <string name="full_company">%1$s - %2$s</string>
+    <string name="photo_description">Фото</string>
+</resources>
