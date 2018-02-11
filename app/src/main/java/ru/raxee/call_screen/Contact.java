@@ -45,7 +45,7 @@ class Contact {
             numberInt = Integer.parseInt(phoneNumber);
         } catch (Exception ignored) {}
 
-        if (numberInt < 0) {
+        if (numberInt <= 0) {
             throw new Exception("Hidden number");
         }
 
